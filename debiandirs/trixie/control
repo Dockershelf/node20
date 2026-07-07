@@ -1,4 +1,4 @@
-Source: nodejs20
+Source: nodejs-20
 Section: web
 Priority: optional
 Maintainer: Luis Alejandro Martínez Faneyth <luis@luisalejandro.org>
@@ -14,7 +14,7 @@ Homepage: https://nodejs.org
 Vcs-Browser: https://github.com/Dockershelf/node20
 Vcs-Git: https://github.com/Dockershelf/node20.git
 
-Package: nodejs20
+Package: nodejs-20
 Architecture: any
 Multi-Arch: allowed
 Depends: ${shlibs:Depends},
