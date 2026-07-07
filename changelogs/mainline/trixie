@@ -1,4 +1,4 @@
-nodejs (20.0.0-1+trixie1) trixie; urgency=medium
+nodejs20 (20.0.0-1+trixie1) trixie; urgency=medium
 
   * Initial Dockershelf packaging for Node.js 20.
 
