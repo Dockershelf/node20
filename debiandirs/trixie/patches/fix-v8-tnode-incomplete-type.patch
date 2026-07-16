@@ -1,7 +1,9 @@
 Description: Add missing js-generator.h include and fix is_convertible for GCC 15
  The code-stub-assembler.h is missing js-generator.h include. Additionally,
  std::is_convertible<T, Object> fails with incomplete types on GCC 15.
- Replace with true since all tagged T subtypes of Object are convertible.
+ Replace with std::true_type since all tagged T subtypes of Object are
+ convertible. In the std::conjunction form a type trait is required rather
+ than a bool value.
 Author: Dockershelf Maintainers <41898282+github-actions[bot]@users.noreply.github.com>
 Forwarded: no
 
@@ -17,12 +19,12 @@ Forwarded: no
  #include "src/objects/smi.h"
 --- a/deps/v8/src/codegen/tnode.h
 +++ b/deps/v8/src/codegen/tnode.h
-@@ -270,7 +270,7 @@
- struct is_subtype {
+@@ -271,7 +271,7 @@
    static const bool value =
-       std::is_base_of<U, T>::value || (std::is_same<U, MaybeObject>::value &&
--                                       std::is_convertible<T, Object>::value);
-+                                       true);
+       std::disjunction<std::is_base_of<U, T>,
+                        std::conjunction<std::is_same<U, MaybeObject>,
+-                                        std::is_convertible<T, Object>>>::value;
++                                        std::true_type>>::value;
  };
  template <class T1, class T2, class U>
  struct is_subtype<UnionT<T1, T2>, U> {

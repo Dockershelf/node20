@@ -1,5 +1,2 @@
 fix-v8-cstdint.patch
-fix-worker-inspector-cstdint.patch
 fix-v8-tnode-incomplete-type.patch
-fix-v8-cppgc-algorithm.patch
-fix-embedtest-algorithm.patch
